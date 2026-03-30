@@ -8,6 +8,9 @@ const PageHeader: React.FC<IPageHeaderProps> = ({
   searchBoxPlaceholder,
   searchPageUrl,
   backgroundImageUrl,
+  seasonalEnabled,
+  seasonalLabel,
+  seasonalUrl,
   context
 }) => {
 
@@ -15,12 +18,12 @@ const PageHeader: React.FC<IPageHeaderProps> = ({
 
   const siteCollectionUrl: string = context.pageContext.site.absoluteUrl;
   const serverRequestPath: string = context.pageContext.site.serverRequestPath;
-  const isHomePage: boolean = context.pageContext.web.absoluteUrl === `${siteCollectionUrl}/SitePages/Home.aspx` 
+  const isHomePage: boolean = context.pageContext.web.absoluteUrl === `${siteCollectionUrl}/SitePages/Home.aspx`
     || serverRequestPath === '/';
 
   const handleSearch = (): void => {
     if (!searchPageUrl || !query.trim()) return;
-    window.location.href = `${searchPageUrl}#q=${encodeURIComponent(query)}`;
+    window.location.href = `${searchPageUrl}?q=${encodeURIComponent(query)}`;
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>): void => {
@@ -37,32 +40,42 @@ const PageHeader: React.FC<IPageHeaderProps> = ({
       </a>
 
       {!isHomePage && (
-        <Breadcrumb
-          serverRequestPath={serverRequestPath}
-          siteCollectionUrl={siteCollectionUrl}
-        />
+        <Breadcrumb serverRequestPath={serverRequestPath} />
       )}
 
-      <div className={styles.searchContainer}>
-        <input
-          type="text"
-          className={styles.searchInput}
-          placeholder={searchBoxPlaceholder || ''}
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          onKeyDown={handleKeyDown}
-          aria-label={searchBoxPlaceholder || 'Search'}
-        />
-        <button
-          className={styles.searchButton}
-          onClick={handleSearch}
-          aria-label="Search"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="11" cy="11" r="8" />
-            <line x1="21" y1="21" x2="16.65" y2="16.65" />
-          </svg>
-        </button>
+      <div className={styles.searchRow}>
+        <div className={styles.searchContainer}>
+          <input
+            type="text"
+            className={styles.searchInput}
+            placeholder={searchBoxPlaceholder || ''}
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            onKeyDown={handleKeyDown}
+            aria-label={searchBoxPlaceholder || 'Search'}
+          />
+          <button
+            className={styles.searchButton}
+            onClick={handleSearch}
+            aria-label="Search"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </button>
+        </div>
+
+        {seasonalEnabled && seasonalLabel && seasonalUrl && (
+          
+          <a
+            href={seasonalUrl}
+            className={styles.seasonalButton}
+            aria-label={seasonalLabel}
+          >
+            {seasonalLabel}
+          </a>
+        )}
       </div>
     </div>
   );

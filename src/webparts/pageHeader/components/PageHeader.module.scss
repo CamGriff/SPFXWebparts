@@ -10,17 +10,22 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  gap: 1.5rem;
+  align-items: flex-start;
+  padding: 0 59px;
+  gap: 1rem;
+  box-sizing: border-box;
 }
 
 .siteTitle {
+  display: inline-block;
   color: #ffffff;
   font-size: $ms-font-size-xl;
   font-weight: $ms-font-weight-semibold;
   text-decoration: none;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
   letter-spacing: 0.02em;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 0.25rem 0.75rem;
+  border-radius: 2px;
 
   &:hover {
     text-decoration: underline;
@@ -31,7 +36,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  max-width: 560px;
+  max-width: 280px;
   background: #ffffff;
   border-radius: 2px;
   overflow: hidden;
@@ -67,6 +72,7 @@
     background: var(--themeDarkAlt, #106ebe);
   }
 }
+
 .breadcrumb {
   display: flex;
   align-items: center;
@@ -77,14 +83,8 @@
 .breadcrumbLink {
   color: #ffffff;
   font-size: $ms-font-size-s;
-  text-decoration: none;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
   opacity: 0.9;
-
-  &:hover {
-    opacity: 1;
-    text-decoration: underline;
-  }
 }
 
 .breadcrumbSeparator {
@@ -92,4 +92,31 @@
   opacity: 0.7;
   font-size: $ms-font-size-s;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.searchRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.seasonalButton {
+  display: inline-block;
+  background: rgba(0, 0, 0, 0.45);
+  color: #ffffff;
+  font-size: $ms-font-size-m;
+  font-weight: $ms-font-weight-semibold;
+  padding: 0.4rem 1.2rem;
+  border-radius: 2px;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: background 0.15s ease;
+  white-space: nowrap;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.65);
+    text-decoration: none;
+  }
 }

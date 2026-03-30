@@ -6,5 +6,8 @@ export interface IPageHeaderProps {
   searchPageUrl: string;
   backgroundImageUrl: string;
   isDarkTheme: boolean;
+  seasonalEnabled: boolean;
+  seasonalLabel: string;
+  seasonalUrl: string;
   context: WebPartContext;
 }

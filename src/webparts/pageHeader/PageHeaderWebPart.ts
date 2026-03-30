@@ -3,7 +3,8 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
   IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  PropertyPaneTextField,
+  PropertyPaneToggle
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
@@ -22,6 +23,9 @@ export interface IPageHeaderWebPartProps {
   searchPageUrl: string;
   backgroundImageUrl: string;
   backgroundImage: IFilePickerResult;
+  seasonalEnabled: boolean;
+  seasonalLabel: string;
+  seasonalUrl: string;
 }
 
 export default class PageHeaderWebPart extends BaseClientSideWebPart<IPageHeaderWebPartProps> {
@@ -37,6 +41,9 @@ export default class PageHeaderWebPart extends BaseClientSideWebPart<IPageHeader
         searchPageUrl: this.properties.searchPageUrl,
         backgroundImageUrl: this.properties.backgroundImageUrl,
         isDarkTheme: this._isDarkTheme,
+        seasonalEnabled: this.properties.seasonalEnabled,
+        seasonalLabel: this.properties.seasonalLabel,
+        seasonalUrl: this.properties.seasonalUrl,
         context: this.context
       }
     );
@@ -89,6 +96,22 @@ export default class PageHeaderWebPart extends BaseClientSideWebPart<IPageHeader
                   },
                   key: 'backgroundImagePicker',
                   label: strings.FieldBackgroundImage
+                })
+              ]
+            },
+            {
+              groupName: strings.GroupNameSeasonal,
+              groupFields: [
+                PropertyPaneToggle('seasonalEnabled', {
+                  label: strings.FieldSeasonalEnabled
+                }),
+                PropertyPaneTextField('seasonalLabel', {
+                  label: strings.FieldSeasonalLabel,
+                  disabled: !this.properties.seasonalEnabled
+                }),
+                PropertyPaneTextField('seasonalUrl', {
+                  label: strings.FieldSeasonalUrl,
+                  disabled: !this.properties.seasonalEnabled
                 })
               ]
             }
