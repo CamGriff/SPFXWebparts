@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <CustomAction
+    Id="272e21d8-5ec6-4b47-ac51-e013d0ae4c48"
+    Title="MultilingualGovernanceCustomiserApplicationCustomizer"
+    Location="ClientSideExtension.ApplicationCustomizer"
+    ClientSideComponentId="72f2bbc6-eb32-4b58-a57a-0facd0b27283"
+    ClientSideComponentProperties="&quot;{}&quot;">
+  </CustomAction>
+</Elements>

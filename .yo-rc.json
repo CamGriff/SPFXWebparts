@@ -1,0 +1,19 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "useGulp": false,
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.22.2",
+    "sdksVersions": {},
+    "version": "1.22.2",
+    "libraryName": "pnp-multilingual-governance",
+    "libraryId": "fcc75690-9977-444c-acd6-659a6ed9e0a0",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "pnp-multilingual-governance",
+    "solutionShortDescription": "pnp-multilingual-governance description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
