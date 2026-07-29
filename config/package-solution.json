@@ -3,7 +3,7 @@
   "solution": {
     "name": "scroll-to-top-client-side-solution",
     "id": "f79cf58a-75d1-44f4-a859-222003d7b59d",
-    "version": "1.0.0.5",
+    "version": "1.0.0.6",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": false,
     "isDomainIsolated": false,
