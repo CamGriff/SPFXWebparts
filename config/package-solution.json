@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "message-banner-client-side-solution",
+    "id": "78cebc24-71c8-4259-9cc9-e243a4e94802",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.22.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "messageBanner description"
+      },
+      "longDescription": {
+        "default": "messageBanner description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "message-banner Feature",
+        "description": "The feature that activates elements of the message-banner solution.",
+        "id": "4394110d-83f1-4f7e-a1d9-57b61d6e017d",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/message-banner.sppkg"
+  }
+}
