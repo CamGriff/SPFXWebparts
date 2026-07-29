@@ -35,12 +35,23 @@ const PageHeader: React.FC<IPageHeaderProps> = ({
       className={styles.pageHeader}
       style={{ backgroundImage: backgroundImageUrl ? `url(${backgroundImageUrl})` : 'none' }}
     >
-      <a href={siteCollectionUrl} className={styles.siteTitle}>
-        {siteTitle}
-      </a>
+      <div className={styles.titleRow}>
+        <a href={siteCollectionUrl} className={styles.siteTitle}>
+          {siteTitle}
+        </a>
+        {seasonalEnabled && seasonalLabel && seasonalUrl && (
+          <a href={seasonalUrl} className={styles.seasonalButton} aria-label={seasonalLabel}>
+            {seasonalLabel}
+          </a>
+        )}
+      </div>
 
       {!isHomePage && (
-        <Breadcrumb serverRequestPath={serverRequestPath} />
+        <Breadcrumb
+          serverRequestPath={serverRequestPath}
+          context={context}
+          siteCollectionUrl={siteCollectionUrl}
+        />
       )}
 
       <div className={styles.searchRow}>
@@ -65,17 +76,6 @@ const PageHeader: React.FC<IPageHeaderProps> = ({
             </svg>
           </button>
         </div>
-
-        {seasonalEnabled && seasonalLabel && seasonalUrl && (
-          
-          <a
-            href={seasonalUrl}
-            className={styles.seasonalButton}
-            aria-label={seasonalLabel}
-          >
-            {seasonalLabel}
-          </a>
-        )}
       </div>
     </div>
   );

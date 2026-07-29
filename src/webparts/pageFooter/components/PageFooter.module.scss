@@ -1,0 +1,111 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.pageFooter {
+  width: 100%;
+  background: "[theme:themePrimary, default: #0078d4]";
+  background: var(--themePrimary, #0078d4);
+  color: #ffffff;
+  padding: 2rem 0;
+}
+
+.footerInner {
+  display: flex;
+  align-items: flex-start;
+  padding: 0 136px;
+  box-sizing: border-box;
+}
+
+.spacerHalf {
+  flex: 0 0 50%;
+}
+
+.spacerThird {
+  flex: 0 0 33.33%;
+}
+
+.logo {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.linkColumns {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.linkColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 120px;
+}
+
+.categoryTitle {
+  font-size: $ms-font-size-m;
+  font-weight: $ms-font-weight-semibold;
+  color: #ffffff;
+  margin: 0 0 0.5rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.8;
+}
+
+.linkList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.footerLink {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: $ms-font-size-s;
+  opacity: 0.85;
+  transition: opacity 0.15s ease;
+
+  &:hover {
+    opacity: 1;
+    text-decoration: underline;
+  }
+}
+
+.footerRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.socialIcon {
+  color: #ffffff;
+  opacity: 0.85;
+  transition: opacity 0.15s ease;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.copyright {
+  font-size: $ms-font-size-xs;
+  opacity: 0.7;
+  margin: 0;
+  color: #ffffff;
+}

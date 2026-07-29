@@ -16,15 +16,22 @@
   box-sizing: border-box;
 }
 
+.titleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .siteTitle {
   display: inline-block;
   color: #ffffff;
-  font-size: $ms-font-size-xl;
+  font-size: $ms-font-size-m;
   font-weight: $ms-font-weight-semibold;
   text-decoration: none;
   letter-spacing: 0.02em;
   background: rgba(0, 0, 0, 0.45);
-  padding: 0.25rem 0.75rem;
+  padding: 0.4rem 0.75rem;
   border-radius: 2px;
 
   &:hover {
@@ -74,10 +81,12 @@
 }
 
 .breadcrumb {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 59px;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.25rem 0;
 }
 
 .breadcrumbLink {
@@ -85,6 +94,12 @@
   font-size: $ms-font-size-s;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
   opacity: 0.9;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    opacity: 1;
+  }
 }
 
 .breadcrumbSeparator {
@@ -92,6 +107,13 @@
   opacity: 0.7;
   font-size: $ms-font-size-s;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.breadcrumbCurrent {
+  color: #ffffff;
+  font-size: $ms-font-size-s;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  opacity: 0.85;
 }
 
 .searchRow {
