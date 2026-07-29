@@ -1,77 +1,50 @@
-# message-banner
+# Message Banner
 
-## Summary
+A SharePoint Framework (SPFx) web part providing a list-driven message banner for SharePoint Online, keeping employees informed with severity-coded, auto-expiring alerts managed entirely by a communications team from a SharePoint list.
 
-Short summary on functionality and used technologies.
-
-[picture of the solution in action, if possible]
-
-## Used SharePoint Framework Version
-
-![version](https://img.shields.io/badge/version-1.22.2-green.svg)
-
-## Applies to
-
-- [SharePoint Framework](https://aka.ms/spfx)
-- [Microsoft 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
-
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
-
-## Prerequisites
-
-> Any special pre-requisites?
-
-## Solution
-
-| Solution    | Author(s)                                               |
-| ----------- | ------------------------------------------------------- |
-| folder name | Author details (name, company, twitter alias with link) |
-
-## Version history
-
-| Version | Date             | Comments        |
-| ------- | ---------------- | --------------- |
-| 1.1     | March 10, 2021   | Update comment  |
-| 1.0     | January 29, 2021 | Initial release |
-
-## Disclaimer
-
-**THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
-
-## Minimal Path to Awesome
-
-- Clone this repository
-- Ensure that you are at the solution folder
-- in the command-line run:
-  - `npm install -g @rushstack/heft`
-  - `npm install`
-  - `heft start`
-
-> Include any additional steps as needed.
-
-Other build commands can be listed using `heft --help`.
+Part of the [SPFXWebparts](https://github.com/CamGriff/SPFXWebparts) collection. Full writeup, preview and demo video: [camerongriffiths.com/spfx/messagebanner](https://www.camerongriffiths.com/spfx/messagebanner)
 
 ## Features
 
-Description of the extension that expands upon high-level summary above.
+- **List-Driven Messages** — banners are stored and managed directly in a SharePoint list. The communications team adds, edits or deactivates items and the banner updates automatically, no deployments or developer involvement required.
+- **Message Severity Levels** — each banner is assigned Low, Medium or High severity, colour-coded blue, orange and red respectively, so employees can immediately gauge urgency at a glance.
+- **Automatic Expiration** — set an expiration date on any message and it automatically stops displaying once that date passes.
+- **Animated Flip Carousel** — when multiple messages are active simultaneously, they cycle automatically with a smooth vertical flip transition, so all messages get visibility without cluttering the page.
+- **See More Link** — optionally attach a hyperlink to any message with a fully customisable button label, or fall back to a sensible default.
+- **Zero Footprint When Empty** — when there are no active messages, the web part collapses completely, leaving no empty space on the page.
+- **Bilingual Ready** — full English and French localisation included, with language detected automatically based on the user's SharePoint interface language.
 
-This extension illustrates the following concepts:
+## Prerequisites
 
-- topic 1
-- topic 2
-- topic 3
+- SharePoint Framework development environment (Node.js, Heft toolchain)
+- SharePoint Online tenant
+- Site owner or SharePoint administrator permissions to deploy the web part
 
-> Notice that better pictures and documentation will increase the sample usage and the value you are providing for others. Thanks for your submissions advance.
+## Getting Started
 
-> Share your web part with others through Microsoft 365 Patterns and Practices program to get visibility and exposure. More details on the community, open-source projects and other activities from http://aka.ms/m365pnp.
+```bash
+npm install
+npm run build
+```
 
-## References
+This produces the `.sppkg` file in `sharepoint/solution/`.
 
-- [Getting started with SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
-- [Building for Microsoft teams](https://docs.microsoft.com/sharepoint/dev/spfx/build-for-teams-overview)
-- [Use Microsoft Graph in your solution](https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
-- [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/sharepoint/dev/spfx/publish-to-marketplace-overview)
-- [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
-- [Heft Documentation](https://heft.rushstack.io/)
+## Deployment
+
+1. **Upload to the App Catalog** — upload the `.sppkg` to your tenant App Catalog. Choose tenant-wide or site-by-site deployment.
+2. **Provision the messages list** — create the SharePoint list that drives the banner content, including severity, expiration date, and optional link fields (see the source for column schema).
+3. **Add to site** — go to Site Contents on the target site, Add an app, find the Message Banner app, install.
+4. **Add the web part** — add Message Banner to a page via the web part picker, typically near the top of the homepage.
+5. **Manage messages** — the communications team adds, edits, and deactivates messages directly in the list, no further deployment needed for content changes.
+
+## Localisation
+
+Ships with English and French out of the box, detected automatically from the user's SharePoint interface language. Additional languages can be added by extending the localisation resource files.
+
+## License
+
+MIT
+
+## Author
+
+[Cameron Griffiths](https://www.camerongriffiths.com), Microsoft 365 consultant based in Valencia, Spain.
