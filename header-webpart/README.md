@@ -1,77 +1,51 @@
-# header-webpart
+# PageHeader
 
-## Summary
+A custom SharePoint Framework (SPFx) web part for creating branded, configurable page headers in SharePoint Online. Replaces the default SharePoint header with a polished, fully configurable, on-brand experience.
 
-Short summary on functionality and used technologies.
+![PageHeader web part preview](https://www.camerongriffiths.com/images/pageHeader.png)
 
-[picture of the solution in action, if possible]
-
-## Used SharePoint Framework Version
-
-![version](https://img.shields.io/badge/version-1.22.2-green.svg)
-
-## Applies to
-
-- [SharePoint Framework](https://aka.ms/spfx)
-- [Microsoft 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
-
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
-
-## Prerequisites
-
-> Any special pre-requisites?
-
-## Solution
-
-| Solution    | Author(s)                                               |
-| ----------- | ------------------------------------------------------- |
-| folder name | Author details (name, company, twitter alias with link) |
-
-## Version history
-
-| Version | Date             | Comments        |
-| ------- | ---------------- | --------------- |
-| 1.1     | March 10, 2021   | Update comment  |
-| 1.0     | January 29, 2021 | Initial release |
-
-## Disclaimer
-
-**THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
-
-## Minimal Path to Awesome
-
-- Clone this repository
-- Ensure that you are at the solution folder
-- in the command-line run:
-  - `npm install -g @rushstack/heft`
-  - `npm install`
-  - `heft start`
-
-> Include any additional steps as needed.
-
-Other build commands can be listed using `heft --help`.
+Part of the [SPFXWebparts](https://github.com/CamGriff/SPFXWebparts) collection. Full writeup and preview: [camerongriffiths.com/spfx/pageheader](https://www.camerongriffiths.com/spfx/pageheader)
 
 ## Features
 
-Description of the extension that expands upon high-level summary above.
+- **Custom Background Image** — upload any image directly from SharePoint via the built-in file picker, turning the header into a visual statement of your organisation's identity.
+- **Smart Search Box** — a prominently placed, clearly visible search box with customisable placeholder text, connected to your SharePoint search results page.
+- **Dynamic Breadcrumbs** — automatically displays the folder path from your Site Pages library on non-home pages, giving users instant context of where they are in the site structure.
+- **Site Identity Tag** — a configurable site name label displayed on the header, linking back to the site home page.
+- **Spotlight Button** — a flexible call-to-action button for pinning timely or high-priority content (campaigns, announcements, events), toggleable directly from the property pane.
+- **Bilingual Ready** — full English and French localisation out of the box, with the architecture in place to support additional languages.
+- **Theme Aware** — automatically inherits your SharePoint site theme colours, no additional configuration required.
 
-This extension illustrates the following concepts:
+## Prerequisites
 
-- topic 1
-- topic 2
-- topic 3
+- SharePoint Framework development environment (Node.js, Heft toolchain)
+- SharePoint Online tenant
+- Site owner or SharePoint administrator permissions to deploy the web part
 
-> Notice that better pictures and documentation will increase the sample usage and the value you are providing for others. Thanks for your submissions advance.
+## Getting Started
 
-> Share your web part with others through Microsoft 365 Patterns and Practices program to get visibility and exposure. More details on the community, open-source projects and other activities from http://aka.ms/m365pnp.
+```bash
+npm install
+npm run build
+```
 
-## References
+This produces the `.sppkg` file in `sharepoint/solution/`.
 
-- [Getting started with SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
-- [Building for Microsoft teams](https://docs.microsoft.com/sharepoint/dev/spfx/build-for-teams-overview)
-- [Use Microsoft Graph in your solution](https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
-- [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/sharepoint/dev/spfx/publish-to-marketplace-overview)
-- [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
-- [Heft Documentation](https://heft.rushstack.io/)
+## Deployment
+
+1. **Upload to the App Catalog** — upload the `.sppkg` to your tenant App Catalog (`/sites/appcatalog/AppCatalog`). Choose tenant-wide or site-by-site deployment depending on how many sites you want to use the header on.
+2. **Add to site** — go to Site Contents on the target site, Add an app, find the PageHeader app, install.
+3. **Add the web part** — add PageHeader to a page via the web part picker, typically placed at the very top of the page.
+4. **Configure** — open the property pane to set your background image, search placeholder text, site identity tag, and spotlight button content.
+
+## Localisation
+
+Ships with English and French out of the box. Additional languages can be added by extending the localisation resource files.
+
+## License
+
+MIT
+
+## Author
+
+[Cameron Griffiths](https://www.camerongriffiths.com), Microsoft 365 consultant based in Valencia, Spain.
