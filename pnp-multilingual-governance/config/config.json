@@ -1,0 +1,26 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "multilingual-governance-dashboard-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/multilingualGovernanceDashboard/MultilingualGovernanceDashboardWebPart.js",
+          "manifest": "./src/webparts/multilingualGovernanceDashboard/MultilingualGovernanceDashboardWebPart.manifest.json"
+        }
+      ]
+    },
+    "multilingual-governance-customiser-application-customizer": {
+      "components": [
+        {
+          "entrypoint": "./lib/extensions/multilingualGovernanceCustomiser/MultilingualGovernanceCustomiserApplicationCustomizer.js",
+          "manifest": "./src/extensions/multilingualGovernanceCustomiser/MultilingualGovernanceCustomiserApplicationCustomizer.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "MultilingualGovernanceDashboardWebPartStrings": "lib/webparts/multilingualGovernanceDashboard/loc/{locale}.js"
+  }
+}
