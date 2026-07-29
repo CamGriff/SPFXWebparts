@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+    <ClientSideComponentInstance
+        Title="ScrollToTop"
+        Location="ClientSideExtension.ApplicationCustomizer"
+        ComponentId="d97e68f4-871a-4013-aa44-08625239e3ed"
+        Properties="{&quot;testMessage&quot;:&quot;Test message&quot;}">
+    </ClientSideComponentInstance>
+</Elements>
