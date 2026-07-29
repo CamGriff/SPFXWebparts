@@ -1,0 +1,19 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "useGulp": false,
+    "plusBeta": false,
+    "isCreatingSolution": false,
+    "nodeVersion": "22.22.2",
+    "sdksVersions": {},
+    "version": "1.22.2",
+    "libraryName": "customisable-tools-menu",
+    "libraryId": "30717805-f6df-4669-90e9-240bc195b6bb",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "customisableToolsMenu",
+    "solutionShortDescription": "customisableToolsMenu description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

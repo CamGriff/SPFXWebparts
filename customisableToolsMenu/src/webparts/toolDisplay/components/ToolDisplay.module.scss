@@ -1,0 +1,48 @@
+.toolDisplay {
+  padding: 0 16px;
+  font-family: "Segoe UI", sans-serif;
+
+  .title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #323130;
+    margin-bottom: 4px;
+  }
+
+  .grid {
+    display: grid;
+    gap: 16px;
+    padding: 16px 0;
+  }
+
+  .tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    text-decoration: none;
+    color: #323130;
+    transition: box-shadow 0.2s ease;
+
+    &:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .icon {
+      font-size: 28px;
+      color: #0078d4;
+    }
+
+    .label {
+      font-size: 13px;
+      font-weight: 500;
+      text-align: center;
+    }
+  }
+}
