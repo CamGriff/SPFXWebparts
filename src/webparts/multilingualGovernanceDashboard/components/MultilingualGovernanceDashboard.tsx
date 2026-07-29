@@ -1,26 +1,15 @@
+
+
+
 import * as React from 'react';
 import '@pnp/sp/webs';
 import '@pnp/sp/lists';
 import '@pnp/sp/items';
 import { SPFI } from '@pnp/sp';
-import {
-  Stack,
-  PrimaryButton,
-  DefaultButton,
-  Toggle,
-  Spinner,
-  SpinnerSize,
-  MessageBar,
-  MessageBarType,
-  Separator,
-  Text,
-  useTheme,
-  mergeStyles
-} from '@fluentui/react';
+import { Stack, PrimaryButton, DefaultButton, Toggle, Spinner, SpinnerSize, MessageBar, MessageBarType } from '@fluentui/react';
 
 import { IMultilingualGovernanceDashboardProps } from './IMultilingualGovernanceDashboardProps';
 import { IDriftItem } from '../../../models/IDriftItem';
-import { DriftStatus } from '../../../models/DriftStatus';
 import { IScanWarning } from '../../../models/IScanWarning';
 import { runDriftScan } from '../../../services/DriftService';
 import SummaryTiles, { SummaryTileKey } from './dashboard/SummaryTiles';
@@ -105,45 +94,35 @@ async function loadDriftItems(sp: SPFI, showInSync: boolean): Promise<IDriftItem
 }
 
 function MultilingualGovernanceDashboard(props: IMultilingualGovernanceDashboardProps): JSX.Element {
-  const theme = useTheme();
   const [items, setItems] = React.useState<IDriftItem[]>([]);
-  const [isLoading, setIsLoading] = React.useState<boolean>(false);
-  const [hasLoaded, setHasLoaded] = React.useState<boolean>(false);
+  const [isLoading, setIsLoading] = React.useState<boolean>(true);
   const [isScanning, setIsScanning] = React.useState<boolean>(false);
   const [scanError, setScanError] = React.useState<string | undefined>(undefined);
   const [scanWarnings, setScanWarnings] = React.useState<IScanWarning[]>([]);
   const [loadError, setLoadError] = React.useState<string | undefined>(undefined);
   const [activeFilter, setActiveFilter] = React.useState<SummaryTileKey>('All');
-  const [showInSync, setShowInSync] = React.useState<boolean>(false);
   const [showConfigPanel, setShowConfigPanel] = React.useState<boolean>(false);
 
-  const loadItems = React.useCallback(
-    async (includeInSync: boolean): Promise<void> => {
-      console.log('[MGov] loadItems: start, includeInSync', includeInSync);
-      setIsLoading(true);
-      setLoadError(undefined);
+  const loadItems = React.useCallback(async (): Promise<void> => {
+    console.log('[MGov] loadItems: start');
+    setIsLoading(true);
+    setLoadError(undefined);
 
-      try {
-        const driftItems = await loadDriftItems(props.sp, includeInSync);
-        console.log('[MGov] loadItems: succeeded, count', driftItems.length);
-        setItems(driftItems);
-        setHasLoaded(true);
-      } catch (error) {
-        console.error('[MGov] loadItems: failed — setting loadError', error);
-        setLoadError('Failed to load translation drift data.');
-      } finally {
-        setIsLoading(false);
-      }
-    },
-    [props.sp]
-  );
-
-  const handleShowInSyncChange = (checked: boolean): void => {
-    setShowInSync(checked);
-    if (hasLoaded) {
-      void loadItems(checked);
+    try {
+      const driftItems = await loadDriftItems(props.sp);
+      console.log('[MGov] loadItems: succeeded, count', driftItems.length);
+      setItems(driftItems);
+    } catch (error) {
+      console.error('[MGov] loadItems: failed — setting loadError', error);
+      setLoadError('Failed to load translation drift data.');
+    } finally {
+      setIsLoading(false);
     }
-  };
+  }, [props.sp]);
+
+  React.useEffect(() => {
+    void loadItems();
+  }, [loadItems]);
 
   const handleRunScan = async (): Promise<void> => {
     console.log('[MGov] handleRunScan: start — clearing scanError');
@@ -165,121 +144,79 @@ function MultilingualGovernanceDashboard(props: IMultilingualGovernanceDashboard
 
     console.log('[MGov] handleRunScan: scan succeeded, calling loadItems');
     setIsScanning(false);
-    await loadItems(showInSync);
+    await loadItems();
     console.log('[MGov] handleRunScan: complete');
   };
 
   const filteredItems = activeFilter === 'All' ? items : items.filter((item) => item.DriftStatus === activeFilter);
 
-  const rootClass = mergeStyles({
-    padding: 16,
-    backgroundColor: theme.semanticColors.bodyBackground
-  });
-
-  const hasTranslatorGroups = items.some(
-    (i) =>
-      i.TranslatorEmail &&
-      (i.DriftStatus === DriftStatus.Stale ||
-        i.DriftStatus === DriftStatus.Missing ||
-        i.DriftStatus === DriftStatus.Abandoned)
-  );
-
   return (
-    <div className={rootClass}>
-      <Stack tokens={{ childrenGap: 16 }}>
-        <Stack horizontal horizontalAlign="space-between" verticalAlign="center" wrap tokens={{ childrenGap: 12 }}>
-          <Text
-            variant="xLarge"
-            styles={{ root: { fontWeight: 600, color: theme.semanticColors.bodyText } }}
-          >
-            Translation Drift Dashboard
-          </Text>
-          <Stack horizontal verticalAlign="center" wrap tokens={{ childrenGap: 8 }}>
-            <PrimaryButton
-              text="Run Scan"
-              iconProps={{ iconName: 'Refresh' }}
-              onClick={() => {
-                void handleRunScan();
-              }}
-              disabled={isScanning || isLoading}
-            />
-            <DefaultButton
-              text="Refresh"
-              iconProps={{ iconName: 'SyncOccurence' }}
-              onClick={() => {
-                void loadItems(showInSync);
-              }}
-              disabled={isScanning || isLoading}
-            />
-            <DefaultButton
-              text="Export CSV"
-              iconProps={{ iconName: 'Download' }}
-              onClick={() => exportToCsv(filteredItems)}
-              disabled={isScanning || isLoading || filteredItems.length === 0}
-            />
-            <Toggle
-              label="Show In Sync"
-              inlineLabel
-              checked={showInSync}
-              disabled={isScanning || isLoading}
-              onChange={(_event, checked) => handleShowInSyncChange(!!checked)}
-            />
-            <DefaultButton
-              text={showConfigPanel ? 'Hide Config' : 'Manage Sites'}
-              iconProps={{ iconName: 'Settings' }}
-              checked={showConfigPanel}
-              onClick={() => setShowConfigPanel(!showConfigPanel)}
-            />
-          </Stack>
+    <Stack tokens={{ childrenGap: 16 }} styles={{ root: { padding: 16 } }}>
+      <Stack horizontal horizontalAlign="space-between" verticalAlign="center" wrap tokens={{ childrenGap: 12 }}>
+        <h2 style={{ margin: 0 }}>Translation Drift Dashboard</h2>
+        <Stack horizontal verticalAlign="center" tokens={{ childrenGap: 8 }}>
+          <PrimaryButton
+            text="Run Scan"
+            onClick={() => {
+              void handleRunScan();
+            }}
+            disabled={isScanning || isLoading}
+          />
+          <DefaultButton
+            text="Refresh"
+            onClick={() => {
+              void loadItems();
+            }}
+            disabled={isScanning || isLoading}
+          />
+          <DefaultButton
+            text="Export"
+            onClick={() => exportToCsv(filteredItems)}
+            disabled={isScanning || isLoading || filteredItems.length === 0}
+          />
+          <Toggle
+            label="Manage sites"
+            inlineLabel
+            checked={showConfigPanel}
+            onChange={(_event, checked) => setShowConfigPanel(!!checked)}
+          />
         </Stack>
-
-        {scanError && (
-          <MessageBar messageBarType={MessageBarType.error} onDismiss={() => setScanError(undefined)}>
-            {scanError}
-          </MessageBar>
-        )}
-        {loadError && (
-          <MessageBar messageBarType={MessageBarType.error} onDismiss={() => setLoadError(undefined)}>
-            {loadError}
-          </MessageBar>
-        )}
-        {scanWarnings.map((warning) => (
-          <MessageBar
-            key={warning.siteUrl}
-            messageBarType={MessageBarType.warning}
-            onDismiss={() => setScanWarnings((current) => current.filter((w) => w.siteUrl !== warning.siteUrl))}
-          >
-            {`Could not scan the following site: ${warning.siteUrl} — ${warning.error}`}
-          </MessageBar>
-        ))}
-
-        {isScanning && <Spinner size={SpinnerSize.medium} label="Scanning sites for translation drift..." />}
-
-        {showConfigPanel && <ConfigPanel sp={props.sp} />}
-
-        {isLoading ? (
-          <Spinner size={SpinnerSize.large} label="Loading translation drift data..." />
-        ) : !hasLoaded ? (
-          <>
-            <SummaryTiles items={items} activeFilter={activeFilter} onFilterChange={setActiveFilter} />
-            <MessageBar messageBarType={MessageBarType.info}>
-              Click Refresh to load data, or Run Scan to detect drift and load the results.
-            </MessageBar>
-          </>
-        ) : (
-          <>
-            <SummaryTiles items={items} activeFilter={activeFilter} onFilterChange={setActiveFilter} />
-            {hasTranslatorGroups && (
-              <>
-                <TranslatorPanel allItems={items} sp={props.sp} graphClient={props.graphClient} />
-                <Separator />
-              </>
-            )}
-            <DriftTable items={filteredItems} />
-          </>
-        )}
       </Stack>
-    </div>
+
+      {scanError && (
+        <MessageBar messageBarType={MessageBarType.error} onDismiss={() => setScanError(undefined)}>
+          {scanError}
+        </MessageBar>
+      )}
+      {loadError && (
+        <MessageBar messageBarType={MessageBarType.error} onDismiss={() => setLoadError(undefined)}>
+          {loadError}
+        </MessageBar>
+      )}
+      {scanWarnings.map((warning) => (
+        <MessageBar
+          key={warning.siteUrl}
+          messageBarType={MessageBarType.warning}
+          onDismiss={() => setScanWarnings((current) => current.filter((w) => w.siteUrl !== warning.siteUrl))}
+        >
+          {`Could not scan the following site: ${warning.siteUrl} — ${warning.error}`}
+        </MessageBar>
+      ))}
+
+      {isScanning && <Spinner size={SpinnerSize.medium} label="Scanning sites for translation drift..." />}
+
+      {showConfigPanel && <ConfigPanel sp={props.sp} />}
+
+      {isLoading ? (
+        <Spinner size={SpinnerSize.large} label="Loading translation drift data..." />
+      ) : (
+        <>
+          <SummaryTiles items={items} activeFilter={activeFilter} onFilterChange={setActiveFilter} />
+          <TranslatorPanel allItems={items} sp={props.sp} graphClient={props.graphClient} />
+          <DriftTable items={filteredItems} />
+        </>
+      )}
+    </Stack>
   );
 }
 
