@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "message-banner-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/messageBanner/MessageBannerWebPart.js",
+          "manifest": "./src/webparts/messageBanner/MessageBannerWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "MessageBannerWebPartStrings": "lib/webparts/messageBanner/loc/{locale}.js"
+  }
+}
