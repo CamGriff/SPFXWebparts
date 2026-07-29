@@ -1,77 +1,50 @@
-# scroll-to-top
+# ScrollToTop
 
-## Summary
+A lightweight SharePoint Framework (SPFx) Application Customizer that adds a scroll-to-top button to SharePoint Online pages. A small addition that makes a big difference on long, content-rich intranet pages.
 
-Short summary on functionality and used technologies.
+![ScrollToTop extension preview](https://www.camerongriffiths.com/images/ScrollToTop.png)
 
-[picture of the solution in action, if possible]
-
-## Used SharePoint Framework Version
-
-![version](https://img.shields.io/badge/version-1.22.2-green.svg)
-
-## Applies to
-
-- [SharePoint Framework](https://aka.ms/spfx)
-- [Microsoft 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
-
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
-
-## Prerequisites
-
-> Any special pre-requisites?
-
-## Solution
-
-| Solution    | Author(s)                                               |
-| ----------- | ------------------------------------------------------- |
-| folder name | Author details (name, company, twitter alias with link) |
-
-## Version history
-
-| Version | Date             | Comments        |
-| ------- | ---------------- | --------------- |
-| 1.1     | March 10, 2021   | Update comment  |
-| 1.0     | January 29, 2021 | Initial release |
-
-## Disclaimer
-
-**THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
-
-## Minimal Path to Awesome
-
-- Clone this repository
-- Ensure that you are at the solution folder
-- in the command-line run:
-  - `npm install -g @rushstack/heft`
-  - `npm install`
-  - `heft start`
-
-> Include any additional steps as needed.
-
-Other build commands can be listed using `heft --help`.
+Part of the [SPFXWebparts](https://github.com/CamGriff/SPFXWebparts) collection. Full writeup and preview: [camerongriffiths.com/spfx/scrolltotop](https://www.camerongriffiths.com/spfx/scrolltotop)
 
 ## Features
 
-Description of the extension that expands upon high-level summary above.
+- **Always There When You Need It** — sits quietly in the bottom right corner of every page, only appearing after the user has scrolled down, keeping the interface clean on shorter pages.
+- **Smooth Scroll** — one click and the page glides back to the top instantly, no jarring jumps.
+- **Theme Aware** — automatically adopts your SharePoint site's primary theme colour, no styling configuration required.
+- **Site-Level Control** — installed once by the site owner, activates automatically on every page of the site. No page-by-page setup, no editor involvement needed.
+- **Zero Footprint** — built as a lightweight SPFx Application Customizer with no external dependencies, fast to load, invisible until needed.
+- **Bilingual Ready** — fully compatible with multilingual SharePoint sites.
 
-This extension illustrates the following concepts:
+## Prerequisites
 
-- topic 1
-- topic 2
-- topic 3
+- SharePoint Framework development environment (Node.js, Heft toolchain)
+- SharePoint Online tenant
+- Site owner or SharePoint administrator permissions to deploy the extension
 
-> Notice that better pictures and documentation will increase the sample usage and the value you are providing for others. Thanks for your submissions advance.
+## Getting Started
 
-> Share your web part with others through Microsoft 365 Patterns and Practices program to get visibility and exposure. More details on the community, open-source projects and other activities from http://aka.ms/m365pnp.
+```bash
+npm install
+npm run build
+```
 
-## References
+This produces the `.sppkg` file in `sharepoint/solution/`.
 
-- [Getting started with SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
-- [Building for Microsoft teams](https://docs.microsoft.com/sharepoint/dev/spfx/build-for-teams-overview)
-- [Use Microsoft Graph in your solution](https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
-- [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/sharepoint/dev/spfx/publish-to-marketplace-overview)
-- [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
-- [Heft Documentation](https://heft.rushstack.io/)
+## Deployment
+
+1. **Upload to the App Catalog** — upload the `.sppkg` to your tenant App Catalog. Choose tenant-wide or site-by-site deployment.
+2. **Add to site** — go to Site Contents on the target site, Add an app, find the ScrollToTop app, install.
+
+That's it. As an Application Customizer, it activates automatically across every page of the site once installed, no further page-level configuration is required.
+
+## Localisation
+
+Fully compatible with multilingual SharePoint sites.
+
+## License
+
+MIT
+
+## Author
+
+[Cameron Griffiths](https://www.camerongriffiths.com), Microsoft 365 consultant based in Valencia, Spain.
