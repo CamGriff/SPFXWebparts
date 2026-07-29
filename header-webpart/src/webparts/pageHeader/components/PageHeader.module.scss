@@ -1,0 +1,144 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.pageHeader {
+  position: relative;
+  width: 100%;
+  min-height: 220px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 59px;
+  gap: 1rem;
+  box-sizing: border-box;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.siteTitle {
+  display: inline-block;
+  color: #ffffff;
+  font-size: $ms-font-size-m;
+  font-weight: $ms-font-weight-semibold;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 0.4rem 0.75rem;
+  border-radius: 2px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.searchContainer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 280px;
+  background: #ffffff;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.searchInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 0.6rem 1rem;
+  font-size: $ms-font-size-m;
+  font-family: $ms-font-family-fallbacks;
+  background: transparent;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+}
+
+.searchButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: "[theme:themePrimary, default: #0078d4]";
+  background: var(--themePrimary, #0078d4);
+  color: #ffffff;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: "[theme:themeDarkAlt, default: #106ebe]";
+    background: var(--themeDarkAlt, #106ebe);
+  }
+}
+
+.breadcrumb {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 59px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.breadcrumbLink {
+  color: #ffffff;
+  font-size: $ms-font-size-s;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  opacity: 0.9;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    opacity: 1;
+  }
+}
+
+.breadcrumbSeparator {
+  color: #ffffff;
+  opacity: 0.7;
+  font-size: $ms-font-size-s;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.breadcrumbCurrent {
+  color: #ffffff;
+  font-size: $ms-font-size-s;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  opacity: 0.85;
+}
+
+.searchRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.seasonalButton {
+  display: inline-block;
+  background: rgba(0, 0, 0, 0.45);
+  color: #ffffff;
+  font-size: $ms-font-size-m;
+  font-weight: $ms-font-weight-semibold;
+  padding: 0.4rem 1.2rem;
+  border-radius: 2px;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: background 0.15s ease;
+  white-space: nowrap;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.65);
+    text-decoration: none;
+  }
+}

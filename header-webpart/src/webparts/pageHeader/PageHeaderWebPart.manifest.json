@@ -1,0 +1,29 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "c34d8b6b-a91b-42cc-ab93-9951822fabea",
+  "alias": "PageHeaderWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+  "supportsFullBleed": true,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Advanced" },
+    "title": { "default": "Page Header" },
+    "description": { "default": "Site header with background image, search, breadcrumb, and seasonal banner" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "siteTitle": "",
+      "searchBoxPlaceholder": "Search...",
+      "searchPageUrl": "",
+      "backgroundImageUrl": "",
+      "seasonalEnabled": false,
+      "seasonalLabel": "",
+      "seasonalUrl": ""
+    }
+  }]
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "1d1f8027-e956-44f7-8820-3369efbbed26",
+  "alias": "PageFooterWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+  "supportsFullBleed": true,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Advanced" },
+    "title": { "default": "PageFooter" },
+    "description": { "default": "Site footer with configurable links and social media" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "linkedInUrl": "",
+      "youTubeUrl": "",
+      "footerListName": "FooterLinks"
+    }
+  }]
+}
