@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "customisable-tools-menu-client-side-solution",
+    "id": "30717805-f6df-4669-90e9-240bc195b6bb",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.22.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "customisableToolsMenu description"
+      },
+      "longDescription": {
+        "default": "customisableToolsMenu description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "customisable-tools-menu Feature",
+        "description": "The feature that activates elements of the customisable-tools-menu solution.",
+        "id": "e18f9d87-58c7-44ba-8762-4a0a4acc2ac3",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/customisable-tools-menu.sppkg"
+  }
+}

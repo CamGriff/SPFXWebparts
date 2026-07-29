@@ -1,0 +1,32 @@
+.toolPicker {
+  max-width: 480px;
+  padding: 20px;
+  font-family: "Segoe UI", sans-serif;
+
+  .heading {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #323130;
+  }
+
+  .subheading {
+    font-size: 14px;
+    color: #605e5c;
+    margin-bottom: 20px;
+  }
+
+  .sectionLabel {
+    font-size: 13px;
+    font-weight: 600;
+    color: #323130;
+    margin-bottom: 8px;
+    margin-top: 16px;
+  }
+
+  .actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 24px;
+  }
+}
