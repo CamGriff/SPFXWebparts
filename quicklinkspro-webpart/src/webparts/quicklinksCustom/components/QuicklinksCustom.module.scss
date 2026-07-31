@@ -1,0 +1,83 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.quicklinksCustom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0.5rem 0;
+}
+
+.tile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  flex: 1 1 calc(50% - 0.5rem);
+  min-width: 200px;
+  padding: 1.25rem 1.5rem;
+  background: "[theme:neutralLight, default: #edebe9]";
+  background: var(--neutralLight, #edebe9);
+  border-radius: 4px;
+  border-left: 4px solid "[theme:themePrimary, default: #0078d4]";
+  border-left: 4px solid var(--themePrimary, #0078d4);
+  text-decoration: none;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText, #323130);
+  transition: background 0.15s ease, box-shadow 0.15s ease;
+  cursor: pointer;
+  box-sizing: border-box;
+
+  &:hover {
+    background: "[theme:neutralQuaternaryAlt, default: #e1dfdd]";
+    background: var(--neutralQuaternaryAlt, #e1dfdd);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+  }
+}
+
+.tileIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: "[theme:themePrimary, default: #0078d4]";
+  color: var(--themePrimary, #0078d4);
+  flex-shrink: 0;
+  width: 36px;
+}
+
+.tileContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.tileTitle {
+  font-size: $ms-font-size-m;
+  font-weight: $ms-font-weight-semibold;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText, #323130);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tileDescription {
+  font-size: $ms-font-size-s;
+  color: "[theme:neutralSecondary, default: #605e5c]";
+  color: var(--neutralSecondary, #605e5c);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.emptyState {
+  padding: 2rem;
+  text-align: center;
+  color: "[theme:neutralSecondary, default: #605e5c]";
+  color: var(--neutralSecondary, #605e5c);
+  font-size: $ms-font-size-s;
+}
