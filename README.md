@@ -1,77 +1,52 @@
-# quicklinks-custom
+# Quick Links Pro
 
-## Summary
+A SharePoint Framework (SPFx) web part that replaces the out-of-the-box SharePoint Quick Links with a more powerful, content-rich alternative, giving editors the flexibility to provide real context alongside every link.
 
-Short summary on functionality and used technologies.
+![Quick Links Pro web part preview](https://www.camerongriffiths.com/images/quickLinksCustom.png)
+![Quick Links Pro property pane](https://www.camerongriffiths.com/images/quickLinksCustom-pageProperties.png)
 
-[picture of the solution in action, if possible]
-
-## Used SharePoint Framework Version
-
-![version](https://img.shields.io/badge/version-1.22.2-green.svg)
-
-## Applies to
-
-- [SharePoint Framework](https://aka.ms/spfx)
-- [Microsoft 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
-
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
-
-## Prerequisites
-
-> Any special pre-requisites?
-
-## Solution
-
-| Solution    | Author(s)                                               |
-| ----------- | ------------------------------------------------------- |
-| folder name | Author details (name, company, twitter alias with link) |
-
-## Version history
-
-| Version | Date             | Comments        |
-| ------- | ---------------- | --------------- |
-| 1.1     | March 10, 2021   | Update comment  |
-| 1.0     | January 29, 2021 | Initial release |
-
-## Disclaimer
-
-**THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
-
-## Minimal Path to Awesome
-
-- Clone this repository
-- Ensure that you are at the solution folder
-- in the command-line run:
-  - `npm install -g @rushstack/heft`
-  - `npm install`
-  - `heft start`
-
-> Include any additional steps as needed.
-
-Other build commands can be listed using `heft --help`.
+Part of the [SPFXWebparts](https://github.com/CamGriff/SPFXWebparts) collection. Full writeup and preview: [camerongriffiths.com/spfx/quicklinkspro](https://www.camerongriffiths.com/spfx/quicklinkspro)
 
 ## Features
 
-Description of the extension that expands upon high-level summary above.
+- **Rich Tile Layout** — each link is displayed as a clean, rectangular tile with a title, extended description, and optional icon, arranged in a responsive two-column grid.
+- **Extended Descriptions** — unlike the standard Quick Links web part, supports up to 400 characters of descriptive text per tile, giving content creators room to provide real context before a user clicks.
+- **Fluent UI Icons** — choose from the full Microsoft Fluent UI icon library for a recognisable visual cue on each tile.
+- **Fully Editor-Managed** — tiles are added, edited and removed directly from the property pane, no lists, no external data sources, no developer involvement.
+- **Whole Tile Clickable** — the entire tile surface is a single clickable link, maximising the tap and click target on mobile and desktop alike.
+- **Theme Aware** — tile borders and icons automatically adopt your SharePoint site's primary theme colour.
+- **Bilingual Ready** — full English and French localisation included, with the architecture in place to support additional languages.
 
-This extension illustrates the following concepts:
+## Prerequisites
 
-- topic 1
-- topic 2
-- topic 3
+- SharePoint Framework development environment (Node.js, Heft toolchain)
+- SharePoint Online tenant
+- Site owner or SharePoint administrator permissions to deploy the web part
 
-> Notice that better pictures and documentation will increase the sample usage and the value you are providing for others. Thanks for your submissions advance.
+## Getting Started
 
-> Share your web part with others through Microsoft 365 Patterns and Practices program to get visibility and exposure. More details on the community, open-source projects and other activities from http://aka.ms/m365pnp.
+```bash
+npm install
+npm run build
+```
 
-## References
+This produces the `.sppkg` file in `sharepoint/solution/`.
 
-- [Getting started with SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
-- [Building for Microsoft teams](https://docs.microsoft.com/sharepoint/dev/spfx/build-for-teams-overview)
-- [Use Microsoft Graph in your solution](https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
-- [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/sharepoint/dev/spfx/publish-to-marketplace-overview)
-- [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
-- [Heft Documentation](https://heft.rushstack.io/)
+## Deployment
+
+1. **Upload to the App Catalog** — upload the `.sppkg` to your tenant App Catalog. Choose tenant-wide or site-by-site deployment.
+2. **Add to site** — go to Site Contents on the target site, Add an app, find the Quick Links Pro app, install.
+3. **Add the web part** — add Quick Links Pro to a page via the web part picker.
+4. **Configure** — open the property pane to add tiles, each with a title, description, icon, and link URL.
+
+## Localisation
+
+Ships with English and French out of the box. Additional languages can be added by extending the localisation resource files.
+
+## License
+
+MIT
+
+## Author
+
+[Cameron Griffiths](https://www.camerongriffiths.com), Microsoft 365 consultant based in Valencia, Spain.
