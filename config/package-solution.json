@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "quicklinks-custom-client-side-solution",
+    "id": "22d52f1d-4eb0-4b98-b886-e212fcae96a6",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.22.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "quicklinksCustom description"
+      },
+      "longDescription": {
+        "default": "quicklinksCustom description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "quicklinks-custom Feature",
+        "description": "The feature that activates elements of the quicklinks-custom solution.",
+        "id": "0935c89f-81bc-4271-9b86-8558afea4eec",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/quicklinks-custom.sppkg"
+  }
+}

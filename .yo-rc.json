@@ -1,0 +1,19 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "useGulp": false,
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.22.2",
+    "sdksVersions": {},
+    "version": "1.22.2",
+    "libraryName": "quicklinks-custom",
+    "libraryId": "22d52f1d-4eb0-4b98-b886-e212fcae96a6",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "quicklinksCustom",
+    "solutionShortDescription": "quicklinksCustom description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

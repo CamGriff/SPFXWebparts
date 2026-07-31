@@ -1,0 +1,22 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "c8df62b5-200d-4f82-aff5-c670ac34fea7",
+  "alias": "QuicklinksCustomWebPart",
+  "componentType": "WebPart",
+  "version": "1.0.2",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart"],
+  "supportsThemeVariants": true,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Advanced" },
+    "title": { "default": "Links Custom" },
+    "description": { "default": "Configurable quick links tiles with icons and descriptions" },
+    "officeFabricIconFontName": "Link",
+    "properties": {
+      "tiles": []
+    }
+  }]
+}
