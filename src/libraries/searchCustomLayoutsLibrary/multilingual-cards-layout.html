@@ -1,0 +1,183 @@
+<content id="template">
+    <style>
+        .search-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 16px;
+            padding: 16px 0;
+        }
+
+        .search-card {
+            position: relative;
+            background-color: #fff;
+            border: 1px solid #edebe9;
+            border-left: 4px solid #0078d4;
+            border-radius: 8px;
+            padding: 14px 16px;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .search-card:hover {
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .search-card-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin: 0;
+            color: #323130;
+        }
+
+        .search-card-title a {
+            color: #323130;
+            text-decoration: none;
+        }
+
+        .search-card-title a:hover {
+            text-decoration: underline;
+        }
+
+        .search-card-actions {
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+
+        .search-card-meta {
+            font-size: 12px;
+            color: #8a8886;
+            margin: 4px 0 10px;
+        }
+
+        .search-card-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .search-card-pill {
+            font-size: 12px;
+            background-color: #deecf9;
+            color: #0078d4;
+            padding: 3px 10px;
+            border-radius: 999px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .search-card-pill:hover {
+            background-color: #c7e0f4;
+        }
+
+        /* Translation drift badge */
+        .drift-badge {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 10px;
+            white-space: nowrap;
+            cursor: help;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .drift-badge--stale     { background: #fff8e1; color: #f57f17; border: 1px solid #ffd54f; }
+        .drift-badge--missing   { background: #fce4ec; color: #c62828; border: 1px solid #ef9a9a; }
+        .drift-badge--orphaned  { background: #ede7f6; color: #5e35b1; border: 1px solid #b39ddb; }
+        .drift-badge--abandoned { background: #eceff1; color: #455a64; border: 1px solid #b0bec5; }
+
+        .search-cards-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            text-align: center;
+            color: #605e5c;
+        }
+
+        .search-cards-placeholder-text {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .search-cards-placeholder-subtext {
+            font-size: 13px;
+            color: #8a8886;
+        }
+    </style>
+
+    <div class="search-cards-grid">
+        {{#each data.items as |item|}}
+        <div class="search-card">
+            <div class="search-card-header">
+                <h3 class="search-card-title">
+                    <a href="{{item.Path}}" target="_blank">{{item.Title}}</a>
+                </h3>
+                <div class="search-card-actions">
+                    {{#if @root.properties.layoutProperties.showTranslationDriftFlag}}
+                        {{#ifDrift item.UniqueID}}
+                        <span class="drift-badge drift-badge--{{driftStatusClass item.UniqueID}}"
+                              title="{{driftTooltip item.UniqueID}}">
+                            {{driftBadgeLabel item.UniqueID}}
+                        </span>
+                        {{/ifDrift}}
+                    {{/if}}
+                    {{#if @root.properties.layoutProperties.showContactOwnerButton}}
+                    <contact-owner-component
+                        data-item-id="{{item.ListItemID}}"
+                        data-page-url="{{item.Path}}"
+                        data-site-url="{{item.SPSiteURL}}"
+                        data-web-url="{{item.SPWebUrl}}"
+                        data-title="{{item.Title}}">
+                    </contact-owner-component>
+                    {{/if}}
+                </div>
+            </div>
+            <p class="search-card-meta">
+                {{item.SiteTitle}} &middot; Published {{item.PublishedDate}}
+            </p>
+            <div class="search-card-pills">
+                {{#if item.AutoRefinableString111}}
+                <a href="?f_{{@root.filters.instanceId}}={{taxonomyFilterQuery item.RefinableString111 item.AutoRefinableString111 'RefinableString111'}}"
+                   class="search-card-pill"
+                   title="Filter by {{item.AutoRefinableString111}}">
+                    {{item.AutoRefinableString111}}
+                </a>
+                {{/if}}
+            </div>
+        </div>
+        {{/each}}
+    </div>
+
+    {{#if @root.properties.paging.showPaging}}
+    {{#gt @root.data.totalItemsCount @root.properties.paging.itemsCountPerPage}}
+    <pnp-pagination
+        data-total-items="{{@root.data.totalItemsCount}}"
+        data-hide-first-last-pages="{{@root.properties.paging.hideFirstLastPages}}"
+        data-hide-disabled="{{@root.properties.paging.hideDisabled}}"
+        data-hide-navigation="{{@root.properties.paging.hideNavigation}}"
+        data-range="{{@root.properties.paging.pagingRange}}"
+        data-items-count-per-page="{{@root.properties.paging.itemsCountPerPage}}"
+        data-current-page-number="{{@root.paging.currentPageNumber}}"
+        data-theme-variant="{{JSONstringify @root.theme}}">
+    </pnp-pagination>
+    {{/gt}}
+    {{/if}}
+</content>
+
+<content id="placeholder">
+    <div class="search-cards-placeholder">
+        <div class="search-cards-placeholder-text">No pages found</div>
+        <div class="search-cards-placeholder-subtext">Try adjusting your search or filters</div>
+    </div>
+</content>
