@@ -1,0 +1,9 @@
+{
+  "id": "b5b7b743-aa91-4bd3-b650-fb4d9c855d86",
+  "alias": "SearchCustomLayoutsLibrary",
+  "componentType": "Library",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2
+}
