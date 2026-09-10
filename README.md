@@ -40,6 +40,17 @@ npm run build
 
 Each folder produces its own `.sppkg` in `sharepoint/solution/`, deployed independently to your tenant App Catalog.
 
+## Syncing Standalone Repos
+
+Each solution also exists as a standalone repo (a sibling directory of this monorepo clone, e.g. `../messageBanner`), folded in here as a `git subtree`. `scripts/subtree-sync.ps1` keeps the two in sync once a solution has been added as a subtree:
+
+```powershell
+.\scripts\subtree-sync.ps1 pull messageBanner   # bring standalone-repo changes into this monorepo
+.\scripts\subtree-sync.ps1 push messageBanner   # send this monorepo's changes back to the standalone repo
+```
+
+The `Name` argument must match both the subtree folder name here and the sibling directory name; the standalone repo's branch defaults to `master` (`-Branch` to override). For a solution that isn't a subtree here yet, add it first with `git subtree add --prefix=<name> ../<name> master`.
+
 ## License
 
 MIT, see [LICENSE](./LICENSE). Free to use, adapt, and deploy in your own SharePoint environment.
