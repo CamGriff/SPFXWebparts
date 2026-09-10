@@ -1,0 +1,10 @@
+{
+  "id": "9801e54b-4cdf-47d0-a75c-3a421b19efe3",
+  "alias": "PnpFeaturedNewsLayoutLibrary",
+  "componentType": "Library",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2
+}
+

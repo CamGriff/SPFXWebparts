@@ -1,0 +1,230 @@
+<content id="template">
+    <style>
+        .featured-news-layout {
+            display: flex;
+            gap: 16px;
+            padding: 16px 0;
+            align-items: stretch;
+        }
+
+        .featured-hero {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+            border: 1px solid #edebe9;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .featured-hero:hover {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+        }
+
+        .featured-hero-image {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            background-color: #f3f2f1;
+        }
+
+        .featured-hero-body {
+            padding: 16px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .featured-hero-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin: 0;
+            color: #201f1e;
+        }
+
+        .featured-tiles {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .featured-tile {
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+            border: 1px solid #edebe9;
+            border-radius: 8px;
+            overflow: hidden;
+            flex: 1;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .featured-tile:hover {
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .featured-tile-image {
+            width: 100%;
+            height: 90px;
+            object-fit: cover;
+            background-color: #f3f2f1;
+        }
+
+        .featured-tile-body {
+            padding: 10px 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            min-width: 0;
+        }
+
+        .featured-tile-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin: 0;
+            color: #201f1e;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .news-card-title a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .news-card-title a:hover {
+            text-decoration: underline;
+        }
+
+        .news-card-meta {
+            font-size: 12px;
+            color: #8a8886;
+            margin: 0;
+        }
+
+        .news-card-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 2px;
+        }
+
+        .news-card-pill {
+            font-size: 12px;
+            background-color: #deecf9;
+            color: #0078d4;
+            padding: 3px 10px;
+            border-radius: 999px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .news-card-pill:hover {
+            background-color: #c7e0f4;
+        }
+
+        .news-card-actions {
+            display: flex;
+            gap: 4px;
+            margin-top: 4px;
+        }
+
+        .featured-news-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            text-align: center;
+            color: #605e5c;
+        }
+    </style>
+
+    <div class="featured-news-layout">
+
+        {{#withFeaturedHero data.items as |item|}}
+        <div class="featured-hero">
+            {{#if item.AutoPreviewImageUrl}}
+            <img class="featured-hero-image" src="{{item.AutoPreviewImageUrl}}" alt="" />
+            {{/if}}
+            <div class="featured-hero-body">
+                <h2 class="featured-hero-title news-card-title">
+                    <a href="{{item.Path}}">{{item.Title}}</a>
+                </h2>
+                <p class="news-card-meta">{{item.SiteTitle}} &middot; {{item.LastModifiedTime}}</p>
+                <div class="news-card-pills">
+                    {{#if item.AutoRefinableString113}}
+                    <a href="?f_{{@root.filters.instanceId}}={{taxonomyFilterQuery item.RefinableString113 item.AutoRefinableString113 'RefinableString113'}}"
+                       class="news-card-pill"
+                       title="Filter by {{item.AutoRefinableString113}}">
+                        {{item.AutoRefinableString113}}
+                    </a>
+                    {{/if}}
+                </div>
+                <div class="news-card-actions">
+                    <report-content-component
+                        data-item-id="{{item.ListItemID}}"
+                        data-page-url="{{item.Path}}"
+                        data-site-url="{{item.SPSiteURL}}"
+                        data-web-url="{{item.SPWebUrl}}"
+                        data-title="{{item.Title}}">
+                    </report-content-component>
+                    <share-article-component
+                        data-page-url="{{item.Path}}"
+                        data-title="{{item.Title}}">
+                    </share-article-component>
+                </div>
+            </div>
+        </div>
+        {{/withFeaturedHero}}
+
+        <div class="featured-tiles">
+            {{#eachNonHero data.items 3 as |item|}}
+            <div class="featured-tile">
+                {{#if item.AutoPreviewImageUrl}}
+                <img class="featured-tile-image" src="{{item.AutoPreviewImageUrl}}" alt="" />
+                {{/if}}
+                <div class="featured-tile-body">
+                    <h3 class="featured-tile-title news-card-title">
+                        <a href="{{item.Path}}">{{item.Title}}</a>
+                    </h3>
+                    <p class="news-card-meta">{{item.SiteTitle}} &middot; {{item.LastModifiedTime}}</p>
+                    <div class="news-card-pills">
+                        {{#if item.AutoRefinableString113}}
+                        <a href="?f_{{@root.filters.instanceId}}={{taxonomyFilterQuery item.RefinableString113 item.AutoRefinableString113 'RefinableString113'}}"
+                           class="news-card-pill"
+                           title="Filter by {{item.AutoRefinableString113}}">
+                            {{item.AutoRefinableString113}}
+                        </a>
+                        {{/if}}
+                    </div>
+                    <div class="news-card-actions">
+                        <report-content-component
+                            data-item-id="{{item.ListItemID}}"
+                            data-page-url="{{item.Path}}"
+                            data-site-url="{{item.SPSiteURL}}"
+                            data-web-url="{{item.SPWebUrl}}"
+                            data-title="{{item.Title}}">
+                        </report-content-component>
+                        <share-article-component
+                            data-page-url="{{item.Path}}"
+                            data-title="{{item.Title}}">
+                        </share-article-component>
+                    </div>
+                </div>
+            </div>
+            {{/eachNonHero}}
+        </div>
+
+    </div>
+</content>
+
+<content id="placeholder">
+    <div class="featured-news-placeholder">
+        <div>No news articles found</div>
+    </div>
+</content>
