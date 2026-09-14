@@ -1,0 +1,9 @@
+{
+  "id": "e1058f3c-a81f-437b-b469-2f7e8fb30179",
+  "alias": "PnpNewsDigestLibrary",
+  "componentType": "Library",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2
+}
