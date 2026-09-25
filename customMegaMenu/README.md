@@ -1,77 +1,69 @@
-# custom-megamenu
+# Custom Mega Menu
 
-## Summary
+A SharePoint Framework (SPFx) Application Customizer that adds a list-driven mega menu to the top of every page on a SharePoint Online site, with up to three levels of navigation managed entirely by editors from a SharePoint list.
 
-Short summary on functionality and used technologies.
-
-[picture of the solution in action, if possible]
-
-## Used SharePoint Framework Version
-
-![version](https://img.shields.io/badge/version-1.22.2-green.svg)
-
-## Applies to
-
-- [SharePoint Framework](https://aka.ms/spfx)
-- [Microsoft 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
-
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
-
-## Prerequisites
-
-> Any special pre-requisites?
-
-## Solution
-
-| Solution    | Author(s)                                               |
-| ----------- | ------------------------------------------------------- |
-| folder name | Author details (name, company, twitter alias with link) |
-
-## Version history
-
-| Version | Date             | Comments        |
-| ------- | ---------------- | --------------- |
-| 1.1     | March 10, 2021   | Update comment  |
-| 1.0     | January 29, 2021 | Initial release |
-
-## Disclaimer
-
-**THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
-
-## Minimal Path to Awesome
-
-- Clone this repository
-- Ensure that you are at the solution folder
-- in the command-line run:
-  - `npm install -g @rushstack/heft`
-  - `npm install`
-  - `heft start`
-
-> Include any additional steps as needed.
-
-Other build commands can be listed using `heft --help`.
+Part of the [SPFXWebparts](https://github.com/CamGriff/SPFXWebparts) collection.
 
 ## Features
 
-Description of the extension that expands upon high-level summary above.
+- **List-Driven Navigation**: menu items live in a `MegaMenuItems` SharePoint list. Editors add, reorder, or remove links and the menu updates on the next page load, no redeployment needed.
+- **Three-Level Hierarchy**: top-level items sit in the menu bar. Hovering one opens a flyout with its second-level links, each with its own third-level links indented beneath it.
+- **Overlay Flyouts**: flyouts float above page content instead of pushing the page down, and stay open while the pointer moves into them.
+- **Custom Ordering**: a `SortOrder` column controls the order of items at every level.
+- **Open in New Tab**: any item can be set to open in a new tab (with `noopener noreferrer`).
+- **Flyout-Only Parents**: a top-level item can be left without a URL and act purely as a heading for its flyout.
+- **Fails Safe**: if the list is missing or can't be read, the menu renders empty and logs to the console instead of breaking the page.
 
-This extension illustrates the following concepts:
+## Prerequisites
 
-- topic 1
-- topic 2
-- topic 3
+- SharePoint Framework development environment (Node.js 22, Heft toolchain)
+- SharePoint Online tenant
+- Site owner or SharePoint administrator permissions to deploy the extension
 
-> Notice that better pictures and documentation will increase the sample usage and the value you are providing for others. Thanks for your submissions advance.
+## The `MegaMenuItems` List
 
-> Share your web part with others through Microsoft 365 Patterns and Practices program to get visibility and exposure. More details on the community, open-source projects and other activities from http://aka.ms/m365pnp.
+Create a custom list named **`MegaMenuItems`** on each site where the menu runs. The menu reads from the current site, so each site needs its own copy. The columns below use internal names:
 
-## References
+| Column | Type | Notes |
+|---|---|---|
+| `Title` | Single line of text | Link text shown in the menu. |
+| `NavUrl` | Hyperlink | Link target. Leave empty for a flyout-only parent. |
+| `ParentId` | Lookup (to `MegaMenuItems`, `ID`) | Parent item. Empty = top-level item. |
+| `Levels` | Choice | Records the item's level for editors. The menu builds its tree from `ParentId`, not this column. |
+| `SortOrder` | Number | Ascending order among siblings. |
+| `OpenInNewTab` | Yes/No | Opens the link in a new tab. |
 
-- [Getting started with SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
-- [Building for Microsoft teams](https://docs.microsoft.com/sharepoint/dev/spfx/build-for-teams-overview)
-- [Use Microsoft Graph in your solution](https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
-- [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/sharepoint/dev/spfx/publish-to-marketplace-overview)
-- [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
-- [Heft Documentation](https://heft.rushstack.io/)
+Up to 500 items are loaded.
+
+## Getting Started
+
+```bash
+npm install
+npm run build
+```
+
+This produces `custom-megamenu.sppkg` in `sharepoint/solution/`.
+
+To debug against a live site, set your tenant domain and start the dev server:
+
+```powershell
+$env:SPFX_SERVE_TENANT_DOMAIN = "<tenant>.sharepoint.com"
+npm run start
+```
+
+Update `pageUrl` in `config/serve.json` to point at a real page on your site.
+
+## Deployment
+
+1. **Upload to the App Catalog**: upload the `.sppkg` to your tenant App Catalog. Choose whether to make it available to all sites.
+2. **Provision the list**: create `MegaMenuItems` on the target site with the columns above.
+3. **Activate on a site**: go to Site Contents on the target site, add the app, and install it. For tenant-wide deployment, the extension is registered in the Tenant Wide Extensions list instead.
+4. **Manage the menu**: editors maintain links directly in the list. Content changes need no further deployment.
+
+## License
+
+MIT
+
+## Author
+
+[Cameron Griffiths](https://www.camerongriffiths.com), Microsoft 365 consultant based in Valencia, Spain.
