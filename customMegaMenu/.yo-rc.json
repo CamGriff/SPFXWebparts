@@ -1,0 +1,20 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "useGulp": false,
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.22.2",
+    "sdksVersions": {},
+    "version": "1.22.2",
+    "libraryName": "custom-megamenu",
+    "libraryId": "4ca50a19-4715-460b-ae1b-dfbeca12c5bd",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "custom-megamenu",
+    "solutionShortDescription": "custom-megamenu description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "extension",
+    "extensionType": "ApplicationCustomizer"
+  }
+}

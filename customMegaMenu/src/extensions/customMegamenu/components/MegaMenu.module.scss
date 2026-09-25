@@ -1,0 +1,97 @@
+.megaMenu {
+  width: 100%;
+  background-color: #ffffff;
+  border-bottom: 1px solid #edebe9;
+  box-sizing: border-box;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 16px;
+}
+
+.navItem {
+  position: relative;
+
+  &:hover .flyout {
+    display: block;
+  }
+}
+
+.navLink {
+  display: inline-block;
+  padding: 14px 16px;
+  color: #323130;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+
+  &:hover {
+    color: #0078d4;
+    background-color: #f3f2f1;
+  }
+}
+
+.chevron {
+  font-size: 10px;
+}
+
+.flyout {
+  // Overlay the page rather than push it down. A high z-index keeps it
+  // above page content and SharePoint's own chrome.
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 240px;
+  background-color: #ffffff;
+  border: 1px solid #edebe9;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  z-index: 1000;
+  padding: 8px 0;
+}
+
+// A level-2 item and everything under it. Grouping each level-2 item with
+// its level-3 children in a column keeps the sub-links visually associated
+// with their parent within the flyout.
+.flyoutColumn {
+  padding: 4px 0;
+}
+
+.flyoutLink {
+  display: block;
+  padding: 8px 20px;
+  color: #323130;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+
+  &:hover {
+    color: #0078d4;
+    background-color: #f3f2f1;
+  }
+}
+
+// Level-3 items sit indented beneath their level-2 parent.
+.flyoutSubList {
+  padding: 2px 0 4px;
+}
+
+.flyoutSubLink {
+  display: block;
+  padding: 6px 20px 6px 36px;
+  color: #605e5c;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 400;
+  white-space: nowrap;
+
+  &:hover {
+    color: #0078d4;
+    background-color: #f3f2f1;
+  }
+}
