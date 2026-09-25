@@ -16,6 +16,7 @@ Each solution lives in its own folder with a dedicated README covering features,
 | [MessageBanner](./messageBanner) | Web Part | List-driven, severity-coded announcement banner with automatic expiration and an animated carousel for multiple active messages. |
 | [TranslationDriftDashboard](./translationdriftdashboard-webpart) | Web Part | Single-site proof of concept surfacing translation drift (In Sync / Stale / Missing) across a multilingual SharePoint site, paired with companion PnP PowerShell scripts. |
 | [PnPMultilingualGovernance](./pnp-multilingual-governance) | SPFx Solution | Tenant-wide successor to the Translation Drift Dashboard: multi-site drift detection, a translator nudge workflow, and Microsoft Graph email notifications, all in a single `.sppkg` with no Azure dependency. |
+| [CustomMegaMenu](./customMegaMenu) | Extension | List-driven Application Customizer that renders a three-level mega menu with flyouts in the top placeholder of every page, managed by editors from a `MegaMenuItems` SharePoint list. |
 
 > Folder names above match the repo as of this writing. `PageFooter`, `ScrollToTop`, `QuickLinksPro`, and `TranslationDriftDashboard` are still being pushed, folder names are best-guess placeholders until confirmed, adjust the links once each is committed if the naming differs.
 
